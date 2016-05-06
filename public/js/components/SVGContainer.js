@@ -1,6 +1,7 @@
 import React from 'react';
 import {random} from 'lodash';
 
+
 import GraphLine from './GraphLine';
 
 export default class SVGContainer extends React.Component {
@@ -25,6 +26,7 @@ export default class SVGContainer extends React.Component {
       baseProfile="full"
       width="300" height="300"
       xmlns="http://www.w3.org/2000/svg">
+
       {this.props.data.map((item) => {
         var jiggle = this.jiggle();
         return <GraphLine key={item.id} item={item} />
