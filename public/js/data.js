@@ -1,5 +1,5 @@
 // date, time, person, project, value, category [joy, success]
-import { sample, range } from 'lodash';
+import { sample, range, uniqueId } from 'lodash';
 import "babel-polyfill";
 
 
@@ -12,13 +12,14 @@ import "babel-polyfill";
 // }
 
 
-export function* generateDatum() {
+function* generateDatum() {
     var datum = function() {
       return {
         "timestamp": function(){
           var hour = sample(range(9, 17));
           return new Date(2016, 3, 4, hour);
         }(),
+        "id": uniqueId(),
         "person_id": sample([1, 2, 3, 4, 5, 6]),
         "project_id": 1,
         "value": sample([1, 2, 3, 4, 5]),
@@ -27,7 +28,7 @@ export function* generateDatum() {
     };
     while(true)
       yield datum();
-  };
+}
 
 var gen = generateDatum();
 
@@ -40,4 +41,6 @@ var data = function(){
   })
 }();
 
-console.log(data);
+export default data;
+
+console.log(data)
