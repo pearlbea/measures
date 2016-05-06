@@ -15,11 +15,13 @@ module.exports = function(grunt){
 
         browserify : {
             app : {
-                src: ['public/js/*.js'],
+                src: ['public/js/*.js', 'public/js/**/*.js'],
                 dest: 'public/dist/main.js',
                 options: {
                     watch: true,
-                    transform: [ ["babelify", { presets: ["es2015"] }] ]
+                    transform: [
+                      ["babelify", { presets: ["es2015", "react"] }]
+                     ]
                 }
             }
         },
